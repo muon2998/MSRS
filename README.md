@@ -40,10 +40,8 @@ Random effect: Judge
 *LMEM also allows an estimation of within-judge correlation, i.e. how correlated are the scores across abstracts for the same judge.*
 
 <img src="http://latex.codecogs.com/svg.latex?Score_{abstract}=&space;\beta_0&space;&plus;&space;a_{judge}&space;&plus;&space;\beta_{abstract}X_{abstract,judge}&space;&plus;&space;\epsilon_{abstract}&space;" title="http://latex.codecogs.com/svg.latex?Score_{abstract}= \beta_0 + a_{judge} + \beta_{abstract}X_{abstract,judge} + \epsilon_{abstract} " />
-Intercept: <img src="http://latex.codecogs.com/svg.latex?\inline&space;\beta_0" title="http://latex.codecogs.com/svg.latex?\inline \beta_0" />
 
-
-
+<img src="http://latex.codecogs.com/svg.latex?\inline&space;Intercept:&space;\beta_0" title="http://latex.codecogs.com/svg.latex?\inline Intercept: \beta_0" />
 
 In the version of LMEM we use, the model is as follows:
 
