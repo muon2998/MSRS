@@ -32,11 +32,21 @@ Formula:
 Based on the problems above, as well as other statistical advantages, the linear mixed effects model (LME, LMEM) is a better fit.
 ##### Math (briefly)
 (Multiple) linear regression, <img src="http://latex.codecogs.com/svg.latex?\inline&space;Y=\beta_0&plus;\beta_1X_1&plus;...&plus;\beta_nX_n&plus;\epsilon" title="http://latex.codecogs.com/svg.latex?\inline Y=\beta_0+\beta_1X_1+...+\beta_nX_n+\epsilon" />, is useful when all of the observations come from a single homogeneous group.
-However, LMEM is more useful when there are nested groups within a larger dataset. For MSRS, the subgroups involve the judges who score the abstracts.
-In the version of LMEM we use, the model is as follows:
+However, LMEM is more useful when there are nested groups within a larger dataset. It introduces the ideas of fixed effects and random effects. Basically, a fixed effect is the variable of interest that we want to use to make a prediction. The random effect is a variable for which we have information, but we want to control for its effect on the outcome. In the case of MSRS, we would have the following:
+Dependent variable: Abstract Score
+Fixed effect: Abstract (ID)
+Random effect: Judge
+
+*LMEM also allows an estimation of within-judge correlation, i.e. how correlated are the scores across abstracts for the same judge.*
 
 <img src="http://latex.codecogs.com/svg.latex?Score_{abstract}=&space;\beta_0&space;&plus;&space;a_{judge}&space;&plus;&space;\beta_{abstract}X_{abstract,judge}&space;&plus;&space;\epsilon_{abstract}&space;" title="http://latex.codecogs.com/svg.latex?Score_{abstract}= \beta_0 + a_{judge} + \beta_{abstract}X_{abstract,judge} + \epsilon_{abstract} " />
-<img src="http://latex.codecogs.com/svg.latex?\inline&space;\beta_0" title="http://latex.codecogs.com/svg.latex?\inline \beta_0" /> is the intercept.
+Intercept: <img src="http://latex.codecogs.com/svg.latex?\inline&space;\beta_0" title="http://latex.codecogs.com/svg.latex?\inline \beta_0" />
+
+
+
+
+In the version of LMEM we use, the model is as follows:
+
 
 
 ##### Terms
