@@ -3,7 +3,6 @@
 **Goal: While minimizing confounding factors, identify top-scoring abstracts in each concentration to select podium, oral, and poster presenters**
 
 ## Background
-> All models are wrong but some are useful. - *George E. P. Box*
 
 ### Scoring Structure
 - Each abstract is placed into one of the 5 concentrations, based on student preference.
@@ -12,6 +11,7 @@
 - Rankings are calculated for top-scorers in each of the of the concentrations.
 
 ### Models
+> All models are wrong but some are useful. - *George E. P. Box*
 
 **We can start by briefly looking at the problems with common scoring systems:**
 ##### Raw Score
