@@ -37,18 +37,16 @@ Dependent variable: Abstract Score
 Fixed effect: Abstract (ID)
 Random effect: Judge
 
-*LMEM also allows an estimation of within-judge correlation, i.e. how correlated are the scores across abstracts for the same judge.*
-
+*
 <img src="http://latex.codecogs.com/svg.latex?Score_{abstract}=&space;\beta_0&space;&plus;&space;a_{judge}&space;&plus;&space;\beta_{abstract}X_{abstract,judge}&space;&plus;&space;\epsilon_{abstract}&space;" title="http://latex.codecogs.com/svg.latex?Score_{abstract}= \beta_0 + a_{judge} + \beta_{abstract}X_{abstract,judge} + \epsilon_{abstract} " />
 <img src="http://latex.codecogs.com/svg.latex?\inline&space;a_{judge}:randomeffectofjudge" title="http://latex.codecogs.com/svg.latex?\inline a_{judge}:randomeffectofjudge" />
 <img src="http://latex.codecogs.com/svg.latex?\inline&space;\epsilon_abstract:residual" title="http://latex.codecogs.com/svg.latex?\inline \epsilon_abstract:residual" />
+<img src="http://latex.codecogs.com/svg.latex?\inline&space;X_{abstract,judge}:rawScore" title="http://latex.codecogs.com/svg.latex?\inline X_{abstract,judge}:rawScore" />
 
-
-
-
-##### Terms
-Fixed effect: 
-Random effect: 
+LMEM is able to:
+- Ensure good and bad abstracts are well-differentiated, unlike in the z-scores 
+- Account for judge bias, an estimation of within-judge correlation, i.e. how correlated are the scores across abstracts for the same judge.
+- Introduce shrinkage into the model for the random effect, which reduce statistical error
 
 ## Running LMEM in R
 
