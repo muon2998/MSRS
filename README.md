@@ -14,11 +14,11 @@
 > All models are wrong but some are useful. - *George E. P. Box*
 
 **We can start by briefly looking at the problems with common scoring systems:**
-##### Raw Score
+#### Raw Score
 Method: Compute the average raw total scores for each abstract
 Issue: Raw scores do not account for difference in bias/harshness of judges in scoring abstracts, so top-scoring abstracts may all come from judges who grade more easily.
 
-##### Z-score/t-score
+#### Z-score/t-score
 Method: For a given judge, the judge has an “judge abstract average and standard deviation” based on the 10 abstracts they reviewed. Then, each abstract can be assigned a z-score for each of the judges, and then we can average the z-scores for each abstract to rank abstracts.
 Formula: 
 
@@ -29,8 +29,19 @@ Formula:
 - Issue 2: The z-score method does not take into consideration of “repeated measurements”, in which the same abstract is read by different judges, so each z-score for a given is computed completely independently from the other judges who scored it
 
 #### Linear Mixed Effects Model
-**Based on the problems above, as well as other statistical advantages, the linear mixed effects model (LME, LMEM) is a better fit
+Based on the problems above, as well as other statistical advantages, the linear mixed effects model (LME, LMEM) is a better fit.
+##### Math (briefly)
+(Multiple) linear regression, <img src="http://latex.codecogs.com/svg.latex?\inline&space;Y=\beta_0&plus;\beta_1X_1&plus;...&plus;\beta_nX_n&plus;\epsilon" title="http://latex.codecogs.com/svg.latex?\inline Y=\beta_0+\beta_1X_1+...+\beta_nX_n+\epsilon" />, is useful when all of the observations come from a single homogeneous group.
+However, LMEM is more useful when there are nested groups within a larger dataset. For MSRS, the subgroups involve the judges who score the abstracts.
+In the version of LMEM we use, the model is as follows:
 
+<img src="http://latex.codecogs.com/svg.latex?Score_{abstract}=&space;\beta_0&space;&plus;&space;a_{judge}&space;&plus;&space;\beta_{abstract}X_{abstract,judge}&space;&plus;&space;\epsilon_{abstract}&space;" title="http://latex.codecogs.com/svg.latex?Score_{abstract}= \beta_0 + a_{judge} + \beta_{abstract}X_{abstract,judge} + \epsilon_{abstract} " />
+<img src="http://latex.codecogs.com/svg.latex?\inline&space;\beta_0" title="http://latex.codecogs.com/svg.latex?\inline \beta_0" /> is the intercept.
+
+
+##### Terms
+Fixed effect: 
+Random effect: 
 
 ## Running LMEM in R
 
