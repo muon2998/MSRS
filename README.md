@@ -34,13 +34,12 @@ Based on the problems above, as well as other statistical advantages, the linear
 (Multiple) linear regression, <img src="http://latex.codecogs.com/svg.latex?\inline&space;Y=\beta_0&plus;\beta_1X_1&plus;...&plus;\beta_nX_n&plus;\epsilon" title="http://latex.codecogs.com/svg.latex?\inline Y=\beta_0+\beta_1X_1+...+\beta_nX_n+\epsilon" />, is useful when all of the observations come from a single homogeneous group.
 However, LMEM is more useful when there are nested groups within a larger dataset, such as in the abstract data. It introduces the ideas of fixed effects and random effects. Basically, a fixed effect is the variable of interest that we want to use to make a prediction. The random effect is a variable for which we have information, but we want to control for its effect on the outcome. In the case of MSRS, we would have the following:
 
-Dependent variable: Abstract Score
+**Dependent variable**: Abstract Score
 
-Fixed effect: Abstract (ID)
+**Fixed effect**: Abstract (ID)
 
-Random effect: Judge
+**Random effect**: Judge
 
-*
 <img src="http://latex.codecogs.com/svg.latex?Score_{abstract}=&space;\beta_0&space;&plus;&space;a_{judge}&space;&plus;&space;\beta_{abstract}X_{abstract,judge}&space;&plus;&space;\epsilon_{abstract}&space;" title="http://latex.codecogs.com/svg.latex?Score_{abstract}= \beta_0 + a_{judge} + \beta_{abstract}X_{abstract,judge} + \epsilon_{abstract} " />
 <img src="http://latex.codecogs.com/svg.latex?\inline&space;a_{judge}:randomeffectofjudge" title="http://latex.codecogs.com/svg.latex?\inline a_{judge}:randomeffectofjudge" />
 <img src="http://latex.codecogs.com/svg.latex?\inline&space;\epsilon_abstract:residual" title="http://latex.codecogs.com/svg.latex?\inline \epsilon_abstract:residual" />
