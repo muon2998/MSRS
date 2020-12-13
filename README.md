@@ -79,7 +79,7 @@ In the current version of the R script, you have to check that the data are in t
 
 *Note: The R Markdown file can always be modified so that it checks some of these things instead and make it more elegant, but for some reason thought at the time these were faster to check "by hand"*
 
-- [ ] set the workding directory to yours in the first line of the R script.
+- [ ] Set the workding directory to yours in the first line of the R script. `setwd("C:/Users/HGupta/Documents/Hopkins/MSRS/2020/Data/Results")`
 - [ ] Formatting for **concentration_judges.txt**: 1-column with judge names -- should match exactly those in all_raw.txt
 - [ ] Formatting for **all_raw.txt**: A tab-separated 6-column file (*or .xlsx/.csv if you change the script*). If you used the same Google Form, this was just a copy/paste straight from the Google Spreadsheet.
   - Column 1: Judge name. **The judge names should be 100% identical across different rows and match the text files that have judge names for each concentration.**
@@ -97,3 +97,6 @@ In the current version of the R script, you have to check that the data are in t
 
 ## Resources
 The explanation for LMEM was extremely brief, so here are a few resources to learn more about it. Feel free to try different variations of LMEM or another model if that ends p being a better fit for the data.
+
+[LMEM and LMEM in R](https://www.youtube.com/watch?v=9BDA5b-gtbc&ab_channel=PagePiccinini): She goes through the equations for LMEM pretty well and compares the difference of adding random effects into a model.
+[LMEM Overview and Fitting](https://www.youtube.com/watch?v=QCqF-2E86r0&ab_channel=MatthewE.Clapham): He explains LMEM in a different, compact way as well, and also goes through some additional ways to check how well the model fits the data.
