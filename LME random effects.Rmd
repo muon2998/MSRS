@@ -1,0 +1,153 @@
+---
+title: "MSRS LME with Random Effects"
+author: "Harshi Gupta"
+date: "12/14/2019"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+## Setup
+
+In this section, please change the "SC_category" variable to the correct concentration. R script is run 5 times to get all the concentrations.
+```{r Setup, warning = FALSE, tidy=TRUE, message = FALSE}
+###################################################
+### Set Working Directory
+setwd("C:/Users/HGupta/Documents/Hopkins/MSRS/2020/Data/Results_Copy")
+
+### clear the workspace
+rm(list=ls())
+
+###################################################
+### Load libraries
+library(lme4)
+library(lattice)
+library(reshape2)
+library(dplyr)
+library(openxlsx)
+library(readxl)
+library(stats)
+library(data.table)
+library(psych)
+library(ggplot2)
+library(knitr)
+
+# Ensure PDF isn't cut off
+opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE)
+
+# File naming information
+SC_category = "clinical"
+
+# Import the names of the judges for the given SC_category (i.e. concentration) above.
+raw_judges <- read.table(file = paste(SC_category,"_judges.txt", sep = ""),header = FALSE, sep="\t", quote="",stringsAsFactors = FALSE)
+# Check to see if this looks right.
+raw_judges
+```
+
+
+Import the raw data, which includes each judges' scores for each abstract. 
+```{r, warning = FALSE, tidy=TRUE, message = FALSE}
+# ########### Data
+# ## Import the raw data from the Excel file. Check Github repository for proper format for input file.
+all_data <- read_excel("all_raw.xlsx")
+summary(all_data)
+# Reorder columns. Add the total score for judges and remove extraneous columns.
+all_data$Score <- rowSums(all_data[3:6])
+all_data <- all_data[-c(3:6)]
+
+# Rename columns in dataframe to Judge, ID, Score
+colnames(all_data) <- c("Judge","ID","Score")
+
+# Extract values for judges in category assigned above
+raw_data <- all_data[all_data$Judge %in% raw_judges[,1],]
+
+# Order dataframe by name of Judge
+raw_data <- raw_data[order(raw_data$Judge),]
+
+
+adjusted_data <- raw_data #rename raw data
+
+# Convert ID column to a character class.
+adjusted_data$ID <- as.character(adjusted_data$ID)
+
+str(adjusted_data)
+```
+
+## Linear Mixed Model
+
+The following code will do following things:  
+1) Run LME with random effects.  
+Dependent variable: Score  
+Fixed effect: ID (Abstract)  
+Random effect: Judges  
+2) Add column for LMER-Adjusted Score and Z-score (based on ID and Judge)  
+3) Average the Adjusted Scores for each ID and generate a 2-column list with ID, LMER-Adjusted, and Z-Scores
+```{r LME, warning = FALSE, tidy=TRUE, message = FALSE}
+# We have a data-frame adjusted_data with variables Judge, ID, and Score 
+#    ID has values of 3-digit ID numbers
+#    Judge has values by names
+#    Score has values from 4 (all 1's) to 28 (all 7's)
+
+##### Fit a linear-mixed-model with random effects for the judges
+
+# LMER model generated
+lmer_model <- lmer(Score ~ factor(ID) + (1 | Judge), data = adjusted_data)
+#lme_model2 <-lme(behaviour ~ task*sex, random = ~ 1|ID/task, method="ML", data=dat)
+
+summary(lmer_model)
+
+# Add adjusted LMER scores corresponding to each actual score as a column, removing the random effect.
+adjusted_data$Score_LMER <- predict(lmer_model, re.form=NA, data = adjusted_data)
+```
+
+
+```{r Graphs, warning = FALSE, tidy=TRUE, message = FALSE}
+###### Make caterpillar plot of conditional SD of random variables (Judge)
+randoms <- ranef(lmer_model, postVar = TRUE)
+qq <- attr(ranef(lmer_model, postVar = TRUE)[[1]], "postVar")
+rand.interc <- randoms$Judge
+df <- data.frame(Intercepts = randoms$Judge[, 1], sd.interc = 2 * sqrt(qq[,, 1:length(qq)]), lev.names = rownames(rand.interc))
+df$lev.names <- factor(df$lev.names, levels = df$lev.names[order(df$Intercepts)])
+p <- ggplot(df, aes(lev.names, Intercepts, shape = lev.names))
+
+# Added horizontal line at y=0, error bars to points and points with size two
+p <- p + geom_hline(yintercept = 0) + geom_errorbar(aes(ymin = Intercepts - sd.interc, ymax = Intercepts + sd.interc), width = 0, color = "black") + geom_point(aes(size = 2))
+
+# Removed legends and with scale_shape_manual point shapes set to 1 and 16
+p <- p + guides(size = FALSE, shape = FALSE) + scale_shape_manual(values = c(rep(x = 1,nrow(df[df$Intercepts < 0,])), rep(x = 16, nrow(df[df$Intercepts > 0,]))))
+
+#Changed appearance of plot (black and white theme) and x and y axis labels
+p <- p + theme_bw() + xlab("Levels:Judges") + ylab("Random Effects")
+
+#Final adjustments of plot
+p <- p + theme(axis.text.x=element_text(size=rel(1.2)),
+               axis.title.x=element_text(size=rel(1.3)),
+               axis.text.y=element_text(size=rel(1.2)),
+               panel.grid.minor=element_blank(),
+               panel.grid.major.x=element_blank())
+
+#To put levels on y axis you need to use coord_flip()
+p <- p+ coord_flip()
+print(p)
+
+###### Make residual plot
+plot(lmer_model)
+```
+
+
+```{r Final, warning = FALSE, tidy=TRUE, message = FALSE}
+##### Add column of z-scores for each student based on judge average and SD
+adjusted_data <- setDT(adjusted_data)[, Z.score := scale(Score), Judge]
+
+### Create a file that has the adjusted scores and raw scores.
+write.xlsx(adjusted_data, file = paste(SC_category,"_","raw_adjusted.xlsx", sep = ""), append = FALSE, sep = "\t", dec = ".", row.names = FALSE, col.names = TRUE, quote = FALSE)
+
+### Make a ranked table grouped by IDs and corresponding average adjusted and raw scores
+RANKED_DATA <- adjusted_data %>% group_by(ID) %>%
+                        summarise(Avg_Score_LMER = mean(Score_LMER),Avg_Z_score = mean(Z.score), Avg_raw_score = mean(Score)) %>%
+                        ungroup() %>%
+                        arrange(desc(Avg_Score_LMER)) %>%
+                        as.data.frame()
+
+write.xlsx(RANKED_DATA, file = paste(SC_category,"_","means_adjusted.xlsx", sep = ""), append = FALSE, sep = "\t", dec = ".", row.names = FALSE, col.names = TRUE, quote = FALSE)
+```
