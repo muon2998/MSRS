@@ -58,8 +58,8 @@ In the input_text_files folder, you will find
   - *Note 1: In hindsight, it be easier to have one text/Excel file that contains 2 columns -- Judge and Concentration. Then, the R script can pull the appropriate judges as needed rather than having 5 separate files for judges.*
   - *Note 2: It could be worth changing the R Markdown file so that it takes input .xlsx or .csv files instead of .txt files since the former would be cleaner, and you wouldn't have to copy the data into a .txt file if it changes.*
 In the Example folder, you will find
-- HTML of running the R script on the "Clinical" concentration
-- Output files from R after running the "Clinical" concentration
+- [PDF](Example/LME-random-effects.pdf) of running the R script on the "Clinical" concentration
+- [Output files](Example/) from R after running the "Clinical" concentration
 
 ### What does the R script do?
 The details are commented and provided in the RMarkdown file -- I recommend looking at the example R script on the clinical concentration.
