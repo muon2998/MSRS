@@ -33,8 +33,11 @@ Based on the problems above, as well as other statistical advantages, the linear
 
 (Multiple) linear regression, <img src="http://latex.codecogs.com/svg.latex?\inline&space;Y=\beta_0&plus;\beta_1X_1&plus;...&plus;\beta_nX_n&plus;\epsilon" title="http://latex.codecogs.com/svg.latex?\inline Y=\beta_0+\beta_1X_1+...+\beta_nX_n+\epsilon" />, is useful when all of the observations come from a single homogeneous group.
 However, LMEM is more useful when there are nested groups within a larger dataset, such as in the abstract data. It introduces the ideas of fixed effects and random effects. Basically, a fixed effect is the variable of interest that we want to use to make a prediction. The random effect is a variable for which we have information, but we want to control for its effect on the outcome. In the case of MSRS, we would have the following:
+
 Dependent variable: Abstract Score
+
 Fixed effect: Abstract (ID)
+
 Random effect: Judge
 
 *
