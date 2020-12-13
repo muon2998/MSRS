@@ -53,7 +53,8 @@ In the main directory, you can find the R Markdown file that runs the script.
 In the input_text_files folder, you will find
 - 1 text file that contains all the raw data (judge, abstract ID, score for each section, etc.)
 - 5 text files that contain the names of the judges
-  - *In hindsight, it would have been easier to just have one text or Excel file that contains 2 columns -- Judge and Concentration. Then, the R script can pull the appropriate judges for each iteration of a specific concentration.*
+  - *Note 1: In hindsight, it would have been easier to just have one text or Excel file that contains 2 columns -- Judge and Concentration. Then, the R script can pull the appropriate judges for each iteration of a specific concentration.*
+  - *Note 2: It could be worth changing the R Markdown file so that it takes input .xlsx or .csv files instead of .txt files since the former would be cleaner, and you wouldn't have to copy the data into a .txt file if it changes.*
 In the Example folder, you will find
 - PDF of running the R script on the "Clinical" concentration
 - Output files from R after running the "Clinical" concentration
@@ -67,8 +68,10 @@ However, here is a broad overview:
 
 ### Data Pre-Processing
 In the current version of the R script, you have to check that the data are in the appropriate format, so please
-[x] sdf
-[x] sdfsd
+*Note: The R Markdown file can always be modified so that it checks some of these things instead and make it more elegant, but felt at the time these were faster to check "by hand"*
+- [ ] Formatting for all_raw.txt: A tab-separated 6-column
+  - [ ] sdfsdf
+- [ ] Formatting for 
 
 
 ## Resources
