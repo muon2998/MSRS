@@ -46,8 +46,10 @@ Random effect: Judge
 LMEM is able to:
 - Ensure good and bad abstracts are well-differentiated, unlike in the z-scores 
 - Account for judge bias, an estimation of within-judge correlation, i.e. how correlated are the scores across abstracts for the same judge.
-- Introduce shrinkage into the model for the random effect, which reduce statistical error
+- Introduce shrinkage into the model for the random effect, which helps reduce some statistical error
 
 ## Running LMEM in R
+
+
 
 ## Resources
