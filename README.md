@@ -53,9 +53,9 @@ LMEM is able to:
 ## Running LMEM in R
 In the main directory, you can find the R Markdown file that runs the script.
 In the input_text_files folder, you will find
-- 1 text file that contains all the raw data (judge, abstract ID, score for each section, etc.)
+- 1 text file (all_raw.txt) that contains all the raw data (judge, abstract ID, score for each section, etc.)
 - 5 text files that contain the names of the judges
-  - *Note 1: In hindsight, it would have been easier to just have one text or Excel file that contains 2 columns -- Judge and Concentration. Then, the R script can pull the appropriate judges for each iteration of a specific concentration.*
+  - *Note 1: In hindsight, it be easier to have one text/Excel file that contains 2 columns -- Judge and Concentration. Then, the R script can pull the appropriate judges as needed rather than having 5 separate files for judges.*
   - *Note 2: It could be worth changing the R Markdown file so that it takes input .xlsx or .csv files instead of .txt files since the former would be cleaner, and you wouldn't have to copy the data into a .txt file if it changes.*
 In the Example folder, you will find
 - PDF of running the R script on the "Clinical" concentration
@@ -64,9 +64,12 @@ In the Example folder, you will find
 ### What does the R script do?
 The details are commented and provided in the RMarkdown file -- I recommend looking at the example R script on the clinical concentration.
 However, here is a broad overview:
-1) 
-2) 
-3) 
+1. Load the data into R, which includes raw abstract scores, abstract ID, and judges.
+2. Sum the abstract scores from the 4 categories (background, methods, etc.)
+3. 
+
+In the current way, I sadly didn't have it loop through the 5 concentrations, so it has to be run 5 times. The only thing you have to change each time you run it is this line:
+`S
 
 ### Data Pre-Processing
 In the current version of the R script, you have to check that the data are in the appropriate format.
