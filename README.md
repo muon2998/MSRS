@@ -67,12 +67,13 @@ However, here is a broad overview:
 3) 
 
 ### Data Pre-Processing
-In the current version of the R script, you have to check that the data are in the appropriate format, so please
+In the current version of the R script, you have to check that the data are in the appropriate format.
+
 *Note: The R Markdown file can always be modified so that it checks some of these things instead and make it more elegant, but felt at the time these were faster to check "by hand"*
 - [ ] Formatting for **<concentration>_judges.txt**: 1-column with judge names -- should match exactly those in all_raw.txt
 - [ ] Formatting for **all_raw.txt**: A tab-separated 6-column file (*or .xlsx/.csv if you change the script*)
   - Column 1: Judge name. **The judge names should be 100% identical across different rows and match the text files that have judge names for each concentration.**
-    - *Note: You could add a function that performs proper capitalization on all the judge names in both all_raw.txt and <concentration>_judges.txt. I would recommend something like: *
+    - Note: You could add a function that performs proper capitalization on all the judge names in both all_raw.txt and <concentration>_judges.txt. I would recommend using the `str_to_tile` command from the `stringr` library with `apply`.
   - Column 2: Abstract ID. Check to make sure the IDs of the submitted abstracts match the ones you assigned to each respective judge. 
   - Column 3-6: Scores for the background, methods, results, and conclusion.
  
