@@ -28,7 +28,9 @@ library(data.table)
 library(psych)
 library(ggplot2)
 library(knitr)
+library(knitr)
 
+opts_chunk$set(dev = "png")
 # Ensure PDF isn't cut off
 opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
 
