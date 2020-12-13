@@ -78,7 +78,7 @@ However, here is a broad overview:
 In the current version of the R script, you have to check that the data are in the appropriate format.
 
 *Note: The R Markdown file can always be modified so that it checks some of these things instead and make it more elegant, but for some reason thought at the time these were faster to check "by hand"*
-
+[all_raw.txt](raw_input_files/all_raw.txt)
 - [ ] Set the workding directory to yours in the first line of the R script. `setwd("C:/Users/HGupta/Documents/Hopkins/MSRS/2020/Data/Results")`
 - [ ] Formatting for **concentration_judges.txt**: 1-column with judge names -- should match exactly those in all_raw.txt
 - [ ] Formatting for **all_raw.txt**: A tab-separated 6-column file (*or .xlsx/.csv if you change the script*). If you used the same Google Form, this was just a copy/paste straight from the Google Spreadsheet.
