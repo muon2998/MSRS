@@ -57,6 +57,7 @@ In the [input_text_files folder](input_text_files/), you will find
 - 5 text files that contain the names of the judges
   - *Note 1: In hindsight, it be easier to have one text/Excel file that contains 2 columns -- Judge and Concentration. Then, the R script can pull the appropriate judges as needed rather than having 5 separate files for judges.*
   - *~~Note 2: It could be worth changing the R Markdown file so that it takes input .xlsx or .csv files instead of .txt files since the former would be cleaner, and you wouldn't have to copy the data into a .txt file if it changes.~~* -- Fixed this 12/13/2020
+
 In the Example folder, you will find
 - [PDF](Example/LME-random-effects.pdf) of running the R script on the "Clinical" concentration
 - [Output files](Example/) from R after running the "Clinical" concentration
