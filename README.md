@@ -51,7 +51,7 @@ LMEM is able to:
 - Introduce shrinkage into the model for the random effect, which helps reduce some statistical error
 
 ## Running LMEM in R
-In the main directory, you can find the [R Markdown file](LME random effects.Rmd) that runs the script.
+In the main directory, you can find the [R Markdown file](LME_random_effects.Rmd) that runs the script.
 In the [input_text_files folder](input_text_files/), you will find
 - 1 text file ([all_raw.xlsx](input_text_files/all_raw.xlsx)) that contains all the raw data (judge, abstract ID, score for each section, etc.)
 - 5 text files that contain the names of the judges
