@@ -58,7 +58,7 @@ In the input_text_files folder, you will find
   - *Note 1: In hindsight, it be easier to have one text/Excel file that contains 2 columns -- Judge and Concentration. Then, the R script can pull the appropriate judges as needed rather than having 5 separate files for judges.*
   - *Note 2: It could be worth changing the R Markdown file so that it takes input .xlsx or .csv files instead of .txt files since the former would be cleaner, and you wouldn't have to copy the data into a .txt file if it changes.*
 In the Example folder, you will find
-- PDF of running the R script on the "Clinical" concentration
+- HTML of running the R script on the "Clinical" concentration
 - Output files from R after running the "Clinical" concentration
 
 ### What does the R script do?
@@ -98,5 +98,8 @@ In the current version of the R script, you have to check that the data are in t
 ## Resources
 The explanation for LMEM was extremely brief, so here are a few resources to learn more about it. Feel free to try different variations of LMEM or another model if that ends p being a better fit for the data.
 
-[LMEM and LMEM in R](https://www.youtube.com/watch?v=9BDA5b-gtbc&ab_channel=PagePiccinini): She goes through the equations for LMEM pretty well and compares the difference of adding random effects into a model.
-[LMEM Overview and Fitting](https://www.youtube.com/watch?v=QCqF-2E86r0&ab_channel=MatthewE.Clapham): He explains LMEM in a different, compact way as well, and also goes through some additional ways to check how well the model fits the data.
+[LMEM and LMEM in R](https://www.youtube.com/watch?v=9BDA5b-gtbc&ab_channel=PagePiccinini): Video. She goes through the equations for LMEM pretty well and compares the difference of adding random effects into a model.
+
+[LMEM Overview and Fitting](https://www.youtube.com/watch?v=QCqF-2E86r0&ab_channel=MatthewE.Clapham): Video. He explains LMEM in a different, compact way as well, and also goes through some additional ways to check how well the model fits the data.
+
+[Intro to Linear Mixed Models](https://ourcodingclub.github.io/tutorials/mixed-models/): Webpage. Alternative to watching videos for going through LMEM.
