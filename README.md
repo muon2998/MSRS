@@ -53,7 +53,7 @@ LMEM is able to:
 ## Running LMEM in R
 In the main directory, you can find the R Markdown file that runs the script.
 In the input_text_files folder, you will find
-- 1 text file ([all_raw.txt](input_text_files/all_raw.txt)) that contains all the raw data (judge, abstract ID, score for each section, etc.)
+- 1 text file ([all_raw.xlsx](input_text_files/all_raw.xlsx)) that contains all the raw data (judge, abstract ID, score for each section, etc.)
 - 5 text files that contain the names of the judges
   - *Note 1: In hindsight, it be easier to have one text/Excel file that contains 2 columns -- Judge and Concentration. Then, the R script can pull the appropriate judges as needed rather than having 5 separate files for judges.*
   - *Note 2: It could be worth changing the R Markdown file so that it takes input .xlsx or .csv files instead of .txt files since the former would be cleaner, and you wouldn't have to copy the data into a .txt file if it changes.*
@@ -80,15 +80,15 @@ In the current version of the R script, you have to check that the data are in t
 *Note: The R Markdown file can always be modified so that it checks some of these things instead and make it more elegant, but for some reason thought at the time these were faster to check "by hand"*
 
 - [ ] Set the workding directory to yours in the first line of the R script. `setwd("C:/Users/HGupta/Documents/Hopkins/MSRS/2020/Data/Results")`
-- [ ] Formatting for **[concentration_judges.txt](input_text_files)**: 1-column with judge names -- should match exactly those in [all_raw.txt](input_text_files/all_raw.txt)
-- [ ] Formatting for **[all_raw.txt](input_text_files/all_raw.txt)**: A tab-separated 6-column file (*or .xlsx/.csv if you change the script*). If you used the same Google Form, this was just a copy/paste straight from the Google Spreadsheet.
+- [ ] Formatting for **[concentration_judges.txt](input_text_files)**: 1-column with judge names -- should match exactly those in [all_raw.xlsx](input_text_files/all_raw.xlsx)
+- [ ] Formatting for **[all_raw.xlsx](input_text_files/all_raw.xlsx)**: A tab-separated 6-column file (*or .xlsx/.csv if you change the script*). If you used the same Google Form, this was just a copy/paste straight from the Google Spreadsheet.
   - Column 1: Judge name. **The judge names should be 100% identical across different rows and match the text files that have judge names for each concentration.**
-    - Note: You could add a function that performs proper capitalization on all the judge names in both [all_raw.txt](input_text_files/all_raw.txt) and concentration_judges.txt. I would recommend using the `str_to_tile` command from the `stringr` library with `apply`.
+    - Note: You could add a function that performs proper capitalization on all the judge names in both [all_raw.xlsx](input_text_files/all_raw.xlsx) and concentration_judges.txt. I would recommend using the `str_to_tile` command from the `stringr` library with `apply`.
   - Column 2: Abstract ID. Check to make sure the IDs of the submitted abstracts match the ones you assigned to each respective judge. 
   - Column 3-6: Scores for the background, methods, results, and conclusion.
 - [ ] I sadly didn't have it loop through the 5 concentrations, so R script must be run 5 times. The only thing you have to change each time you run it is this line: `SC_category = "clinical"`. Change "clinical" to each respective concentration, which were called basic, clinical, heart, history, public. 
 - [ ] If you don't change the R script, ensure all these files are in the same working directory:
-  - [ ] [all_raw.txt](input_text_files/all_raw.txt)
+  - [ ] [all_raw.xlsx](input_text_files/all_raw.xlsx)
   - [ ] [basic_judges.txt](input_text_files/basic_judges.txt)
   - [ ] [clinical_judges.txt](input_text_files/clinical_judges.txt)
   - [ ] [heart_judges.txt](input_text_files/heart_judges.txt)
