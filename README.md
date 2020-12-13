@@ -30,9 +30,9 @@ Formula:
 
 #### Linear Mixed Effects Model
 Based on the problems above, as well as other statistical advantages, the linear mixed effects model (LME, LMEM) is a better fit.
-##### Math (briefly)
+
 (Multiple) linear regression, <img src="http://latex.codecogs.com/svg.latex?\inline&space;Y=\beta_0&plus;\beta_1X_1&plus;...&plus;\beta_nX_n&plus;\epsilon" title="http://latex.codecogs.com/svg.latex?\inline Y=\beta_0+\beta_1X_1+...+\beta_nX_n+\epsilon" />, is useful when all of the observations come from a single homogeneous group.
-However, LMEM is more useful when there are nested groups within a larger dataset. It introduces the ideas of fixed effects and random effects. Basically, a fixed effect is the variable of interest that we want to use to make a prediction. The random effect is a variable for which we have information, but we want to control for its effect on the outcome. In the case of MSRS, we would have the following:
+However, LMEM is more useful when there are nested groups within a larger dataset, such as in the abstract data. It introduces the ideas of fixed effects and random effects. Basically, a fixed effect is the variable of interest that we want to use to make a prediction. The random effect is a variable for which we have information, but we want to control for its effect on the outcome. In the case of MSRS, we would have the following:
 Dependent variable: Abstract Score
 Fixed effect: Abstract (ID)
 Random effect: Judge
@@ -49,7 +49,27 @@ LMEM is able to:
 - Introduce shrinkage into the model for the random effect, which helps reduce some statistical error
 
 ## Running LMEM in R
+In the main directory, you can find the R Markdown file that runs the script.
+In the input_text_files folder, you will find
+- 1 text file that contains all the raw data (judge, abstract ID, score for each section, etc.)
+- 5 text files that contain the names of the judges
+  - *In hindsight, it would have been easier to just have one text or Excel file that contains 2 columns -- Judge and Concentration. Then, the R script can pull the appropriate judges for each iteration of a specific concentration.*
+In the Example folder, you will find
+- PDF of running the R script on the "Clinical" concentration
+- Output files from R after running the "Clinical" concentration
 
+### What does the R script do?
+The details are commented and provided in the RMarkdown file -- I recommend looking at the example R script on the clinical concentration.
+However, here is a broad overview:
+1) 
+2) 
+3) 
+
+### Data Pre-Processing
+In the current version of the R script, you have to check that the data are in the appropriate format, so please
+[x] sdf
+[x] sdfsd
 
 
 ## Resources
+The explanation for LMEM was extremely brief, so here are a few resources to learn more about it. Feel free to try different variations of LMEM or another model if that ends p being a better fit for the data.
