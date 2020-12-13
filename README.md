@@ -41,9 +41,9 @@ However, LMEM is more useful when there are nested groups within a larger datase
 **Random effect**: Judge
 
 <img src="http://latex.codecogs.com/svg.latex?Score_{abstract}=&space;\beta_0&space;&plus;&space;a_{judge}&space;&plus;&space;\beta_{abstract}X_{abstract,judge}&space;&plus;&space;\epsilon_{abstract}&space;" title="http://latex.codecogs.com/svg.latex?Score_{abstract}= \beta_0 + a_{judge} + \beta_{abstract}X_{abstract,judge} + \epsilon_{abstract} " />
-<img src="http://latex.codecogs.com/svg.latex?\inline&space;a_{judge}:randomeffectofjudge" title="http://latex.codecogs.com/svg.latex?\inline a_{judge}:randomeffectofjudge" />
-<img src="http://latex.codecogs.com/svg.latex?\inline&space;\epsilon_abstract:residual" title="http://latex.codecogs.com/svg.latex?\inline \epsilon_abstract:residual" />
-<img src="http://latex.codecogs.com/svg.latex?\inline&space;X_{abstract,judge}:rawScore" title="http://latex.codecogs.com/svg.latex?\inline X_{abstract,judge}:rawScore" />
+<img src="http://latex.codecogs.com/svg.latex?\inline&space;a_{judge}=\textrm{random&space;effect&space;of&space;judge}" title="http://latex.codecogs.com/svg.latex?\inline a_{judge}=\textrm{random effect of judge}" />
+<img src="http://latex.codecogs.com/svg.latex?\inline&space;epsilon_{abstract}=\textrm{residual}" title="http://latex.codecogs.com/svg.latex?\inline epsilon_{abstract}=\textrm{residual}" />
+<img src="http://latex.codecogs.com/svg.latex?\inline&space;X_{abstract,judge}=\textrm{raw&space;score&space;for&space;given&space;abstract&space;from&space;a&space;given&space;judge}" title="http://latex.codecogs.com/svg.latex?\inline X_{abstract,judge}=\textrm{raw score for given abstract from a given judge}" />
 
 LMEM is able to:
 - Ensure good and bad abstracts are well-differentiated, unlike in the z-scores 
