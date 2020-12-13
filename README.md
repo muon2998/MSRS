@@ -66,23 +66,34 @@ The details are commented and provided in the RMarkdown file -- I recommend look
 However, here is a broad overview:
 1. Load the data into R, which includes raw abstract scores, abstract ID, and judges.
 2. Sum the abstract scores from the 4 categories (background, methods, etc.)
-3. 
-
-In the current way, I sadly didn't have it loop through the 5 concentrations, so it has to be run 5 times. The only thing you have to change each time you run it is this line:
-`S
+3. Run the LMEM on this dataset with the equation as described earlier.
+4. Based on LMEM, remove the residual and random effect terms for each abstract to get a predicted score, aka adjusted score, for each abstract.
+5. For fun, display a caterpillar plot for the random effect of the judges out of curiosity to see magnitude and direction of judge bias.
+6. For modeling and ensuring fit, display a residual plot of the fitted data to ensure it is uniformly distributed without any tendencies. 
+  - *There are more options to check how well the model fits the data, both numerically and graphically. Check out the links in the resources.*
+7. (Less useful) Create an output file that for each row of the data (i.e. for each judge and abstract), gives the LMEM score and Z-score. File: concentration_raw_adjusted.xlsx
+8. (More useful) Create an output file that contains the averaged LMEM, averaged Z-score, and averaged raw score for each of the abstracts. File: concentration_means_adjusted.xlsx
 
 ### Data Pre-Processing
 In the current version of the R script, you have to check that the data are in the appropriate format.
 
-*Note: The R Markdown file can always be modified so that it checks some of these things instead and make it more elegant, but felt at the time these were faster to check "by hand"*
+*Note: The R Markdown file can always be modified so that it checks some of these things instead and make it more elegant, but for some reason thought at the time these were faster to check "by hand"*
+
+- [ ] set the workding directory to yours in the first line of the R script.
 - [ ] Formatting for **concentration_judges.txt**: 1-column with judge names -- should match exactly those in all_raw.txt
-- [ ] Formatting for **all_raw.txt**: A tab-separated 6-column file (*or .xlsx/.csv if you change the script*)
+- [ ] Formatting for **all_raw.txt**: A tab-separated 6-column file (*or .xlsx/.csv if you change the script*). If you used the same Google Form, this was just a copy/paste straight from the Google Spreadsheet.
   - Column 1: Judge name. **The judge names should be 100% identical across different rows and match the text files that have judge names for each concentration.**
     - Note: You could add a function that performs proper capitalization on all the judge names in both all_raw.txt and concentration_judges.txt. I would recommend using the `str_to_tile` command from the `stringr` library with `apply`.
   - Column 2: Abstract ID. Check to make sure the IDs of the submitted abstracts match the ones you assigned to each respective judge. 
   - Column 3-6: Scores for the background, methods, results, and conclusion.
- 
-
+- [ ] I sadly didn't have it loop through the 5 concentrations, so R script must be run 5 times. The only thing you have to change each time you run it is this line: `SC_category = "clinical"`. Change "clinical" to each respective concentration, which were called basic, clinical, heart, history, public. 
+- [ ] If you don't change the R script, ensure all these files are in the same working directory:
+  - [ ] all_raw.txt
+  - [ ] basic_judges.txt
+  - [ ] clinical_judges.txt
+  - [ ] heart_judges.txt
+  - [ ] history_judges.txt
+  - [ ] public_judges.txt
 
 ## Resources
 The explanation for LMEM was extremely brief, so here are a few resources to learn more about it. Feel free to try different variations of LMEM or another model if that ends p being a better fit for the data.
