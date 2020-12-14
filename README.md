@@ -108,4 +108,5 @@ The explanation for LMEM was extremely brief, so here are a few resources to lea
 
 
 Feel free to reach out with questions!
+
 -- *Harshi Gupta and Matthew Tan*
