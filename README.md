@@ -104,3 +104,8 @@ The explanation for LMEM was extremely brief, so here are a few resources to lea
 [LMEM Overview and Fitting](https://www.youtube.com/watch?v=QCqF-2E86r0&ab_channel=MatthewE.Clapham): Video. He explains LMEM in a different, compact way as well, and also goes through some additional ways to check how well the model fits the data.
 
 [Intro to Linear Mixed Models](https://ourcodingclub.github.io/tutorials/mixed-models/): Webpage. Alternative to watching videos for going through LMEM.
+
+
+
+Feel free to reach out with questions!
+-- *Harshi Gupta and Matthew Tan*
